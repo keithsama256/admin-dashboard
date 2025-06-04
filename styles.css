@@ -390,3 +390,49 @@ body.dark .sidebar nav a.active {
     font-size: 1.4rem;
   }
 }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+#notifIcon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.user-card img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+#dropdownMenu {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: white;
+  list-style: none;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 10;
+  min-width: 150px;
+}
+
+#dropdownMenu li {
+  padding: 8px;
+  cursor: pointer;
+}

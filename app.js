@@ -94,3 +94,25 @@ const toggleDark = document.getElementById('darkModeToggle');
 toggleDark?.addEventListener('change', () => {
   document.body.classList.toggle('dark');
 });
+
+const userCard = document.getElementById('userCard');
+const dropdownMenu = document.getElementById('dropdownMenu');
+let isDropdownOpen = false;
+
+userCard?.addEventListener('click', () => {
+  isDropdownOpen = !isDropdownOpen;
+  dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
+});
+
+document.addEventListener('click', (e) => {
+  if (!userCard.contains(e.target)) {
+    isDropdownOpen = false;
+    dropdownMenu.style.display = 'none';
+  }
+});
+
+const bellIcon = document.getElementById('notifIcon');
+bellIcon?.addEventListener('click', () => {
+  bellIcon.classList.add('fa-shake');
+  setTimeout(() => bellIcon.classList.remove('fa-shake'), 500);
+});
