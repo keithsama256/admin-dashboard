@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+  />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" 
+    rel="stylesheet" 
+  />
+
+  <!-- Responsive Sidebar Fix -->
+  <style>
+    @media (min-width: 769px) {
+      .sidebar {
+        transform: translateX(0) !important;
+        position: static !important;
+        display: block !important;
+      }
+      .hamburger {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    
+    <!-- Sidebar Drawer -->
+    <aside class="sidebar hidden">
+      <div class="sidebar-header">
+        <div class="brand">⚡ Admin</div>
+        <button id="closeSidebar" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <nav>
+        <a href="#overview" class="active">
+          <i class="fas fa-book-open"></i> <span>Library</span>
+        </a>
+        <a href="#users">
+          <i class="fas fa-users"></i> <span>Members</span>
+        </a>
+        <a href="#sales">
+          <i class="fas fa-book-reader"></i> <span>Borrowing</span>
+        </a>
+        <a href="#messages">
+          <i class="fas fa-bell"></i> <span>Requests</span>
+        </a>
+        <a href="#settings">
+          <i class="fas fa-cogs"></i> <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="logout-container">
+        <button class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <!-- Main header with Hamburger to toggle sidebar -->
+      <header>
+        <button id="toggleSidebar" class="hamburger glass">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1>Dashboard</h1>
+      </header>
+
+      <!-- Overview / Library Snapshot -->
+      <section id="section-overview" class="section">
+        <div class="cards">
+          <div class="card glass">
+            <i class="fas fa-book"></i>
+            <div>
+              <h2>3,240</h2>
+              <p>Total Books</p>
+            </div>
+          </div>
+          <div class="card glass">
+            <i class="fas fa-user"></i>
+            <div>
+              <h2>1,150</h2>
+              <p>Active Members</p>
+            </div>
+          </div>
+          <div class="card glass">
+            <i class="fas fa-book-reader"></i>
+            <div>
+              <h2>872</h2>
+              <p>Borrowed Books</p>
+            </div>
+          </div>
+          <div class="card glass">
+            <i class="fas fa-exclamation-circle"></i>
+            <div>
+              <h2>12</h2>
+              <p>Overdue Returns</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Library Members -->
+      <section id="section-users" class="hidden section">
+        <h2>Library Members</h2>
+        <div class="user-controls">
+          <button class="glass add-user">
+            <i class="fas fa-user-plus"></i> Add User
+          </button>
+          <button class="glass remove-user">
+            <i class="fas fa-user-minus"></i> Remove User
+          </button>
+        </div>
+        <canvas id="usersChart" width="400" height="200"></canvas>
+        <table class="glass">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Join Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jane Mugabo</td>
+              <td>2025-05-27</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td>John Ssekitto</td>
+              <td>2025-05-26</td>
+              <td>Returning</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Borrowing History -->
+      <section id="section-sales" class="hidden section">
+        <h2>Borrowing History</h2>
+        <canvas id="salesChart" width="400" height="200"></canvas>
+        <table class="glass">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Book</th>
+              <th>Member</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2025-06-01</td>
+              <td>11:00</td>
+              <td>1984</td>
+              <td>Alex J.</td>
+              <td>Returned</td>
+            </tr>
+            <tr>
+              <td>2025-05-30</td>
+              <td>14:00</td>
+              <td>Dune</td>
+              <td>Sara K.</td>
+              <td>Borrowed</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Book Requests -->
+      <section id="section-messages" class="hidden section">
+        <h2>Book Requests</h2>
+        <div class="messages">
+          <div class="msg glass"><strong>Alice</strong>: “Please add more sci-fi titles.”</div>
+          <div class="msg glass"><strong>Bob</strong>: “Reserve 'Sapiens' for pickup.”</div>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section id="section-settings" class="hidden section">
+        <h2>Settings</h2>
+        <form class="glass settings-form">
+          <label>
+            Theme
+            <select>
+              <option selected>Light</option>
+              <option>Dark</option>
+            </select>
+          </label>
+          <label>
+            Language
+            <select>
+              <option selected>English</option>
+              <option>Spanish</option>
+            </select>
+          </label>
+          <label>
+            Dark Mode
+            <input type="checkbox" id="darkModeToggle" />
+          </label>
+          <button type="submit">Save</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- External Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
